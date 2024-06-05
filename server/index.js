@@ -2,17 +2,17 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cors = require('cors')
 
+const authRouter = require('./routes/authRoutes');
+
 
 const app = express();
 
 // 1) MIDDLEWARES
-app.use(cors)
+app.use(cors())
 app.use(express.json());
 
 // 2) ROUTES
-app.get('/', (req, res) => {
-    res.send('teste')
-})
+app.use('/api/auth', authRouter);
 
 // 3) MOONGO DB CONNECTION
 mongoose.connect('mongodb://127.0.0.1:27017/authentication')
@@ -31,7 +31,7 @@ app.use((err, res, req, next) => {
 })
 
 // 5) SERVER
-const PORT = process.env.PORT_SERVER
+const PORT = 8027
 app.listen(PORT, () => {
     console.log('Server Runing...')
 })
