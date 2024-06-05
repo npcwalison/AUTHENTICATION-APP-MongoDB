@@ -7,7 +7,7 @@ const createError = require('../utils/appError');
 exports.signup = async (req, res, next) => {
     try{
         // faz uma busca especifica pelo email
-        const user = await User.findOne({email: req.body.email})
+        const user = await User.findOne({ email: req.body.email })
 
         // confere se o usuario existe
         if(user) {
