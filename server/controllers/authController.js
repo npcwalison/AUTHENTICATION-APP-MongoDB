@@ -11,7 +11,7 @@ exports.signup = async (req, res, next) => {
 
         // confere se o usuario existe
         if(user) {
-            return next(new createError('User already exists!', 400))
+            return res.status(422).json({ msg: "Por Favor, utilize outro email!" });
         }
 
         // cria um hash para criptografar a senha
@@ -40,4 +40,6 @@ exports.signup = async (req, res, next) => {
 };
 
 // LOGGING USER
-exports.login = async (req, res, next) => {};
+exports.login = async (req, res, next) => {
+    res.send('Login')
+};
