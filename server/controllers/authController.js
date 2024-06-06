@@ -86,7 +86,15 @@ exports.login = async (req, res, next) => {
         // acima o 3º atributo indica que a chave pode inspirar em 90 dias
 
         return res.status(200).json({
-            msg: "Autenticação realizada com secesso!", token
+            status: 'success',
+            token,
+            message: "Autenticação realizada com secesso!",
+            user: {
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
         })
 
     } catch (err) {
