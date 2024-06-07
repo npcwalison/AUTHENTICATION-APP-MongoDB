@@ -1,0 +1,8 @@
+/* form */
+.form-container {
+    width: 1000px;
+}
+.title,
+.slogan {
+    text-align: center;
+}
