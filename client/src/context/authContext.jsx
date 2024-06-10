@@ -4,16 +4,16 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(null);
-    const [useData, setUseData] = useState(null);
-    const [isAuthenticad, setIsAuthenticad] = useState(false);
-    const storeData = JSON.parse(localStorage.getItem(use_data));
+    const [userData, setUserData] = useState(null);
+    const [isAuthenticated, setisAuthenticated] = useState(false);
+    const storedData = JSON.parse(localStorage.getItem('use_data'));
 
     useEffect(() => {
-        if(storeData) {
+        if(storedData) {
             const {userToken, user} = storedData;
             setToken(userToken)
-            setUseData(user)
-            setIsAuthenticad(true)
+            setUserData(user)
+            setisAuthenticated(true)
         }
     }, [])
 
@@ -23,23 +23,23 @@ export const AuthProvider = ({ children }) => {
             }))
 
         setToken(newToken)
-        setUseData(newData)
-        setIsAuthenticad(true)
+        setUserData(newData)
+        setisAuthenticated(true)
     }
 
     const logout = () => {
         localStorage.removeItem('user_data')
         setToken(null)
-        setUseData(null)
-        setIsAuthenticad(false)
+        setUserData(null)
+        setisAuthenticated(false)
     }
 
 
-    return <AuthProvider.Provider
-        value={(token, isAuthenticad, login, logout, userData)}
+    return <AuthContext.Provider
+        value={{token, isAuthenticated, login, logout, userData}}
     >
         { children }
-    </AuthProvider.Provider>
+    </AuthContext.Provider>
 };
 
 export const useAuth = () => useContext(AuthContext);

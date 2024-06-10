@@ -4,16 +4,15 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 
 import registerImage from "../assets/register.png";
+import useSignUp from "../hooks/useSignUp";
 
 
 const Register = () => {
+    const { loading, error, registerUser } = useSignUp();
 
     const handleRegister = (values) => {
-        console.log(values);
+        registerUser(values)
     };
-
-    const error = false
-    const loading = false
 
     return (
         <Card className="form-container">
