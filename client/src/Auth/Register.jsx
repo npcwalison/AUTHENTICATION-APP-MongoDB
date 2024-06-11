@@ -89,7 +89,7 @@ const Register = () => {
 
                         <Form.Item
                             label="Password"
-                            name="passwordComfirm"
+                            name="passwordConfirm"
                             rules={[
                                 {
                                     required: true,
