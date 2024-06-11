@@ -4,16 +4,15 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 
 import registerImage from "../assets/register.png";
+import useLogin from "../hooks/useLogin";
 
 
 const Login = () => {
+    const {error, loading, loginUser } = useLogin();
 
-    const handleLogin = (values) => {
-        console.log(values);
+    const handleLogin = async (values) => {
+        await loginUser(values)
     };
-
-    const error = false
-    const loading = false
 
     return (
         <Card className="form-container">
